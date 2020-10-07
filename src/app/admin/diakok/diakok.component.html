@@ -1,0 +1,70 @@
+<app-navbarcomp></app-navbarcomp>
+
+<!--PANEL-------------------------->
+<div class="md-form">
+  <button name='hozzaad' id='hozBtn'(click)='showMe()' class='btn btn-primary'><img class='clk-pic' src='../../../assets/img/plusz.png'></button> 
+ </div>
+
+<!--HOZZÁADÁS--------------------->
+<div class='cont-panel'[hidden]='display'>
+  <form  #modosit ='ngForm' novalidate>
+    <div class="form-group">
+      <label for='neptun'>Neptunkód:</label>
+      <input type="text" name="neptun" class="form-control" required pattern="[0-9a-zA-Z]{6,6}"
+      placeholder='kérem írja be a hozzáadni kívánt neptun kódot!'(focusout)='nepSave($event)'>
+
+    
+ </div>
+  <button name='mentes' id='mentes' (click)='ujDiak()' class='btn btn-primary'[disabled]="modosit.form.invalid">Mentés</button>
+</form>
+</div>
+
+
+
+<!--TÁBLÁZAT---------------------->
+<div class='container-fluid'>
+ <table class='table table-dark'>
+  <thead>
+    <th>{{diakHead[0]}}</th>
+    <th>{{diakHead[1]}}</th>
+    <th>{{diakHead[2]}}</th>
+    <th>{{diakHead[3]}}</th>
+    <th>{{diakHead[4]}}</th>
+    <th>{{diakHead[5]}}</th>
+    </thead>
+
+    <tr *ngFor='let user of diak'>
+      
+
+      <td *ngIf='editId === user.id'><input class='szerk' type='text' [(ngModel)]='user.neptun'></td>
+      <td *ngIf='editId !== user.id'>{{user.neptun}}</td>
+
+      <td *ngIf='editId === user.id'><input class='szerk' type='text' [(ngModel)]='user.firstName'></td>
+      <td *ngIf='editId !== user.id'>{{user.firstName}}</td>
+
+      <td *ngIf='editId === user.id'><input class='szerk' type='text' [(ngModel)]='user.lastName'></td>
+      <td *ngIf='editId !== user.id'>{{user.lastName}}</td>
+
+      <td *ngIf='editId === user.id'><input class='szerk' type='text' [(ngModel)]='user.pwd'></td>
+      <td *ngIf='editId !== user.id'>{{user.pwd}}</td>
+
+      <td *ngIf='editId === user.id'><input class='szerk' type='text' [(ngModel)]='user.username'></td>
+      <td *ngIf='editId !== user.id'>{{user.username}}</td>
+
+      <td *ngIf='editId === user.id'><input class='szerk' type='text' [(ngModel)]='user.teamName'></td>
+      <td *ngIf='editId !== user.id'>{{user.teamName}}</td>
+
+      <td *ngIf='!(i==0)'><button id='mod'class='btn btn-warning' value='{{user.id}}' (click)='Mod(user.id)'>
+        <img src="../../../assets/img/modosit.svg" width="15" />
+      </button></td>
+      <td *ngIf='!(i==0)'><button id='sav'class='btn btn-success' value='{{user.id}}' (click)='Save(user)'>
+        <img src="../../../assets/img/save.png" width="15" />
+      </button></td>
+      <td *ngIf='!(i==0)'><button id='del'class='btn btn-danger' value='{{user.id}}' (click)='Del(user.id)'>
+        <img src="../../../assets/img/bezar.png" width="15" />
+      </button></td>
+      </tr>
+
+  </table>
+</div>
+

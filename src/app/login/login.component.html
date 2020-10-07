@@ -1,0 +1,85 @@
+
+<div class="container-fluid">
+<!--row 1------------------->
+<div class="row">
+    <div id='logo' class="col col-lg-12 col-6" id="logo">
+      <img src='../../assets/img/logo.png'>
+    </div>
+  </div>
+<!--row 1------------------->
+
+<form  #loginForm ="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <!--row 2------------------->
+    <div class="row">
+
+      <div class="col col-lg-12 col-6">
+        <div class="form-group">
+          <label for="username">Felhasználónév:</label>
+          <input name="username" type="text" class="form-control" pattern="[0-9a-zA-Z]{4,10}" required #username="ngModel" 
+          [class.is-valid]="username.valid && username.touched" [class.is-invalid]="username.invalid && username.touched" 
+          placeholder="..." [(ngModel)]="loginModel.username">
+
+       <!--HIBAÜZENETEK-->
+       <div [class.d-none]="username.valid ||username.untouched" *ngIf="username.errors">
+        <small class="text-danger" *ngIf="username.errors.required">Kérem adja meg a felhasználónevet!</small>
+        <small class="text-danger" *ngIf="username.errors.pattern">Minimum 4, maximum 10 karakter!</small>
+        </div>
+          </div>
+      </div>
+  </div>
+  <!--row 2------------------->
+    
+  <!--row 3------------------->
+    <div class="row">
+
+      <div class="col col-lg-12 col-6">
+          <div class="form-group">
+          <label for="pwd">Jelszó:</label>
+          <input name="pwd" type="password" class="form-control" pattern="[0-9a-zA-Z]{8,8}" required #pwd="ngModel" 
+          [class.is-valid]="pwd.valid && pwd.touched" [class.is-invalid]="pwd.invalid && pwd.touched" 
+          placeholder="***" [(ngModel)]="loginModel.pwd">
+
+         <!--HIBAÜZENETEK-->
+         <div [class.d-none]="pwd.valid ||pwd.untouched" *ngIf="pwd.errors">
+          <small class="text-danger" *ngIf="pwd.errors.required">Kérem adja meg a jelszavát!</small>
+          <small class="text-danger" *ngIf="pwd.errors.pattern">8 karakter szükséges!</small>
+          </div>
+
+          </div>
+        </div>
+    </div>
+
+      <!--row 4------------------->
+      <div class="row">
+        <div class="col col-lg-12 col-6">
+          <button type="submit" [disabled]="loginForm.form.invalid" name="submit" value="Submit" class="btn btn-primary btn-xs-2">Belépés</button>
+            <!--<button type="submit" class="btn btn-primary btn-xs-2">Belépés</button>-->
+          </div>
+      </div>
+    <!--row 4------------------->
+    
+    <!--SIKERES REGELÉS---------------------------->
+    <!--<div class="col col-lg-12 col-6" [class.d-none] = "kuldhete.value !=2" id="kuld">
+      <div class="form-group">
+      <p>Sikeres Regisztráció, kérem lépjen be</p>
+      <input class="text-success" type="number" name='kuldhete' id="kuldhete"[(ngModel)]='loginModel.kuldhete'>
+      </div>
+    </div>-->
+
+  </form>
+   <!--row 3------------------->
+
+
+
+  <!--row 5------------------->
+    <div class="row">
+      <div class="col col-lg-12 col-6">
+          <button [routerLink]="['/regisztral']" class="btn btn-link btn-xs-2">Regisztáció</button>
+          </div>
+    </div>
+
+  <!--row 5------------------->
+  
+</div> 
+<app-footer></app-footer>

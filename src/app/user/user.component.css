@@ -1,0 +1,23 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.container-fluid{
+
+    min-height:100vw;
+    background-image:url('../../assets/img/bgdashboard.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+}
+p{
+
+    display:block;
+    position:relative;
+    color:blue;
+    margin-left:37vw;
+    margin-top:5vw;
+}

@@ -1,0 +1,27 @@
+.container-fluid{
+    /*background-color:lightgreen;*/
+      height:100vh;
+  }
+  .wrap{
+
+    min-height:100vw;
+    background-image:url('../../../assets/img/bg.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+  }
+  .cont-panel{
+
+    height:fit-content;
+    width:fit-content;
+    margin-left:40vw;
+  }
+  table{
+    margin-top: 3vw;
+    border-top:10px solid lightblue;
+    border-left:10px solid lightblue;
+    border-right:10px solid lightblue;
+    border-bottom:10px solid lightblue;
+    border-radius:5%;
+ }

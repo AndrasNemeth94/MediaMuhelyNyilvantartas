@@ -1,0 +1,57 @@
+.container-fluid{
+    
+    position:bottom;
+    background-color:none;
+    /*min-height:10vw;*/
+    background-color:rgb(0,123,255);
+    /*border-top:2px solid black;*/
+}
+.col{
+
+    text-align:center;
+    background-color:none;
+    min-height:2vw;
+   /* border-top:2px solid black;
+    border-right:2px solid black;
+    border-left:2px solid black;
+    border-bottom:2px solid black;*/
+}
+.row{
+
+    margin-top:1vw;
+    min-height:3vw;
+    background-color:none;
+    width:100%;
+}
+a{
+
+    opacity:0;
+    font-size:2vw;
+}
+#insta{
+
+    background-image:url("../../../assets/img/insta.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    background-color:none;
+    background-size: contain;
+}
+#face{
+
+    background-image:url("../../../assets/img/fb.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    background-color:none;
+    background-size: contain;
+}
+#jgypk{
+
+    background-image:url("../../../assets/img/jgypk.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    background-color:none;
+    background-size: contain;
+}

@@ -1,0 +1,108 @@
+<app-navbarcomp></app-navbarcomp>
+
+
+<!--PANEL-------------------------->
+<div class="md-form">
+   <button name='hozzaad' id='hozBtn'(click)='showMe()' class='btn btn-primary'><img class='clk-pic' src='../../../assets/img/plusz.png'></button> 
+  </div>
+
+<!--HOZZÁADÁS--------------------->
+<div class='cont-panel' [hidden]='display'>
+<form id="targyhozzad" #targyModel="ngForm" novalidate>
+
+    <div class='form-group'>
+        <label for='targy_marka'>márka:</label>
+        <input id='marka' type='text' class='form-control' name='marka' pattern="^([0-9]*[a-zA-Z]){3,}[0-9]*$" [(ngModel)]="ujTargy.marka" required #marka="ngModel"
+        [class.is-valid]="marka.valid && marka.touched" [class.is-invalid]="marka.invalid && marka.touched" 
+        placeholder="..." [(ngModel)]="ujTargy.marka">
+
+         <!--HIBAÜZENETEK MÁRKA-->
+       <div [class.d-none]="marka.valid ||marka.untouched" *ngIf="marka.errors">
+        <small class="text-danger" *ngIf="marka.errors.required">Kérem adja meg a márkát!</small>
+        <small class="text-danger" *ngIf="marka.errors.pattern">Minimum 3 ABC karakter!</small>
+        </div>
+    </div>
+
+    <div class='form-group'>
+        <label for='targy_tipus'>típus:</label>
+        <input id='tipus' type='text' class='form-control' name='tipus' pattern="^([0-9]*[a-zA-Z]){3,}[0-9]*$" 
+        [(ngModel)]="ujTargy.tipus" required #tipus="ngModel" [class.is-valid]="tipus.valid && tipus.touched" 
+        [class.is-invalid]="tipus.invalid && tipus.touched" placeholder="..." [(ngModel)]="ujTargy.tipus">
+
+          <!--HIBAÜZENETEK TÍPUS-->
+       <div [class.d-none]="tipus.valid ||tipus.untouched" *ngIf="tipus.errors">
+        <small class="text-danger" *ngIf="tipus.errors.required">Kérem adja meg a típust!</small>
+        <small class="text-danger" *ngIf="tipus.errors.pattern">Minimum 3 ABC karakter!</small>
+        </div>
+    </div>
+
+    <div class='form-group'>
+        <label for='targy_db'>darabszám:</label>
+        <input id='db' type='number' class='form-control' name='db' pattern='^[1-9][0-9]*$' [(ngModel)]="ujTargy.db" 
+        required #db="ngModel" [class.is-valid]="db.valid && db.touched" [class.is-invalid]="db.invalid && db.touched" 
+        placeholder="..." [(ngModel)]="ujTargy.db">
+
+        <!--HIBAÜZENETEK DARABSZÁM-->
+       <div [class.d-none]="db.valid ||db.untouched" *ngIf="db.errors">
+        <small class="text-danger" *ngIf="db.errors.required">Kérem adja meg a darabszámot!</small>
+        <small class="text-danger" *ngIf="db.errors.pattern">A számnak 0-nál nagyobbnak kell lennie!</small>
+        </div>
+    </div>
+
+    <div class='form-group'>
+        <label for='targy_elerheto'>elérhető:</label>
+            <div *ngFor='let i of igen_nem'>
+                <input type="radio"
+                name='eler'
+                value='{{i}}'
+                (change) = "valaszValt($event)"
+                [(ngModel)]='ujTargy.eler'>
+                <i>{{i}}</i>
+                </div>
+    </div>
+
+    <button class='btn btn-primary' [disabled]="targyModel.form.invalid" (click)='targyHozza()'>Mentés</button>
+    </form>
+    </div>
+
+<div class='container-fluid'>
+    <table class='table table-dark'>
+        <thead>
+            <th>{{targyHead[0]}}</th>
+            <th>{{targyHead[1]}}</th>
+            <th>{{targyHead[2]}}</th>
+            <th>{{targyHead[3]}}</th>
+            <th>{{targyHead[4]}}</th>
+        </thead>
+
+        <tr *ngFor ='let i of targyak'>
+
+            <td *ngIf='editId === i.targy_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_id'></td>
+            <td *ngIf='editId !== i.targy_id'>{{i.targy_id}}</td>
+
+            <td *ngIf='editId === i.targy_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_marka'></td>
+            <td *ngIf='editId !== i.targy_id'>{{i.targy_marka}}</td>
+            
+            <td *ngIf='editId === i.targy_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_tipus'></td>
+            <td *ngIf='editId !== i.targy_id'>{{i.targy_tipus}}</td>
+
+            <td *ngIf='editId === i.targy_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_db'></td>
+            <td *ngIf='editId !== i.targy_id'>{{i.targy_db}}</td>
+
+            <td *ngIf='editId === i.targy_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_elerheto'></td>
+            <td *ngIf='editId !== i.targy_id'>{{i.targy_elerheto}}</td>
+
+            <td *ngIf='!(i==0)'><button id='mod'class='btn btn-warning' value='{{i.targy_id}}' (click)='Mod(i.targy_id)'>
+                <img src="../../../assets/img/modosit.svg" width="15" />
+            </button></td>
+            <td *ngIf='!(i==0)'><button id='sav'class='btn btn-success' value='{{i.targy_id}}' (click)='Save(i)'>
+                <img src="../../../assets/img/save.png" width="15" />
+            </button></td>
+            <td *ngIf='!(i==0)'><button id='del'class='btn btn-danger' value='{{i.targy_id}}' (click)='Del(i.targy_id)'>
+                <img src="../../../assets/img/bezar.png" width="15" />
+            </button></td>
+        </tr>
+    </table>
+</div>
+
+

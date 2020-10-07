@@ -1,0 +1,116 @@
+<div class='container-fluid'>
+    <form #szerkForm="ngForm">
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+        
+                <div class="form-group">
+                <label for="neptunkod">Neptun kód:</label>
+                <input name="neptun" type="text" class="form-control" pattern="[0-9a-zA-Z]{6,6}" required #neptun="ngModel" 
+                [class.is-valid]="neptun.valid && neptun.touched" [class.is-invalid]="neptun.invalid && neptun.touched" 
+                placeholder="..." [(ngModel)]="szerkModel.neptun">
+                <!--HIBAÜZENETEK-->
+                  <div [class.d-none]="neptun.valid ||neptun.untouched" *ngIf="neptun.errors">
+                  <small class="text-danger" *ngIf="neptun.errors.required">Kérem írja be a NEPTUN kódot!</small>
+                  <small class="text-danger" *ngIf="neptun.errors.pattern">6 karakter szükséges!</small>
+                  </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+            <div class="form-group">
+              <label for="firstName">Keresztnév:</label>
+              <input name="firstName" type="text" class="form-control" required #firstName="ngModel" 
+              [class.is-valid]="firstName.valid && firstName.touched" [class.is-invalid]="firstName.invalid && firstName.touched" 
+              placeholder="..." [(ngModel)]="szerkModel.firstName">
+              <!--HIBAÜZENETEK-->
+              <small class="text-danger" [class.d-none] ="firstName.valid || firstName.untouched">Kérdem adja meg a keresztnevét!</small>
+            </div>
+        </div>
+        </div>
+        
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+            <div class="form-group">
+              <label for="lastName">Vezetéknév:</label>
+              <input name="lastName" type="text" class="form-control" required #lastName="ngModel" 
+              [class.is-valid]="lastName.valid && lastName.touched" [class.is-invalid]="lastName.invalid &&lastName.touched" 
+              placeholder="..." [(ngModel)]="szerkModel.lastName">
+              <!--HIBAÜZENETEK-->
+              <small class="text-danger" [class.d-none] ="lastName.valid || lastName.untouched">Kérdem adja meg a vezetéknevét!</small>
+            </div>
+        </div>
+        </div>
+        
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+            <div class="form-group">
+              <label for="username">Felhasználónév:</label>
+              <input name="username" type="text" class="form-control" pattern="[0-9a-zA-Z]{4,10}" required #username="ngModel" 
+              [class.is-valid]="username.valid && username.touched" [class.is-invalid]="username.invalid && username.touched" 
+              placeholder="..." [(ngModel)]="szerkModel.username">
+        
+               <!--HIBAÜZENETEK-->
+               <div [class.d-none]="username.valid ||username.untouched" *ngIf="username.errors">
+                <small class="text-danger" *ngIf="username.errors.required">Kérem adja meg a felhasználónevet!</small>
+                <small class="text-danger" *ngIf="username.errors.pattern">Minimum 4, maximum 10 karakter!</small>
+                </div>
+        
+            </div>
+        </div>
+        </div>
+        
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+            <div class="form-group">
+                <label for="pwd">Jelszó:</label>
+                <input name="pwd" type="password" class="form-control" pattern="[0-9a-zA-Z]{8,8}" required #pwd="ngModel" 
+                [class.is-valid]="pwd.valid && pwd.touched" [class.is-invalid]="pwd.invalid && pwd.touched" 
+                placeholder="***" [(ngModel)]="szerkModel.pwd">
+        
+                 <!--HIBAÜZENETEK-->
+                 <div [class.d-none]="pwd.valid ||pwd.untouched" *ngIf="pwd.errors">
+                  <small class="text-danger" *ngIf="pwd.errors.required">Kérem adja meg a jelszavát!</small>
+                  <small class="text-danger" *ngIf="pwd.errors.pattern">8 karakter szükséges!</small>
+                  </div>
+        
+              </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input name="email" type="email" class="form-control" required #email="ngModel" 
+                [class.is-valid]="email.valid && email.touched" [class.is-invalid]="email.invalid && email.touched" 
+                placeholder="..." [(ngModel)]="szerkModel.email">
+                <!--HIBAÜZENETEK-->
+              <small class="text-danger" [class.d-none] ="email.valid || email.untouched">Kérdem adja meg az e-mail címét!</small>
+              </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col col-6 col-md-8 col-lg-12">
+              <div class="form-group">
+                <label for="teamName">Csapatnév:</label>
+                <input name="teamName" type="text" class="form-control" required #teamName="ngModel" 
+                [class.is-valid]="teamName.valid && teamName.touched" [class.is-invalid]="teamName.invalid && teamName.touched" 
+                placeholder="..." [(ngModel)]="szerkModel.teamName">
+                <!--HIBAÜZENETEK-->
+              <small class="text-danger" [class.d-none] ="teamName.valid || teamName.untouched">Kérdem adja meg a csapata nevét!</small>
+              </div>
+            </div>
+        </div>
+        
+        <div class='row'>
+            <div class="col col-6 col-md-8 col-lg-12">
+            <button type="submit" [disabled]="szerkForm.form.invalid" name="submit" value="Submit" class="btn btn-light">Regisztrál</button>
+            <button id='back' class='btn btn-light' [routerLink]="['/diakok']">Vissza</button>
+            </div>
+        </div>
+          </form>
+    </div>

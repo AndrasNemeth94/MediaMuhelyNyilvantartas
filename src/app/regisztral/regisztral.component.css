@@ -1,0 +1,45 @@
+.container-fluid{
+
+
+    width:max-content;
+    height:max-content;
+    background-color:none;
+    background-image:url('../../assets/img/bg.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+   /* border-top:2px solid black;
+    border-right:2px solid black;
+    border-bottom:2px solid black;
+    border-left:2px solid black;*/
+}
+.btn{
+
+    position:relative;
+    border-bottom:2px solid lightgray;
+}
+#back{
+
+    float:left;
+}
+#reg{
+
+    float:right;
+}
+.col{
+
+    align-content: center;
+   /* border-top:2px solid black;
+    border-right:2px solid black;
+    border-bottom:2px solid black;
+    border-left:2px solid black;*/
+}
+.form-group{
+
+    text-align:center;
+     border-bottom:3px solid lightgray;
+    /*border-right:1px solid lightgray;
+    border-bottom:1px solid lightgray;
+    border-left:1px solid lightgray;*/
+}

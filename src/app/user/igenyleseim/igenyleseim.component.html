@@ -1,0 +1,59 @@
+<app-navbardiak></app-navbardiak>
+
+<div class='wrap'>
+<div class="md-form">
+    <button name='hozzaad' id='hozBtn'(click)='showMe()' class='btn btn-primary'><img class='clk-pic' src='../../../assets/img/plusz.png'></button> 
+   </div>
+  
+  <!--HOZZÁADÁS--------------------->
+  <div class='cont-panel'[hidden]='display'>
+    <form  #modosit ='ngForm' novalidate>
+      <div class="form-group">
+        <label for='targy'>igényelt tárgy:</label>
+        <input type="text" name="targy" class="form-control" [(ngModel)]='pluszIgeny.igenyelt_targy' required
+        placeholder='...'>
+   </div>
+   
+   <div class="form-group">
+    <label for='menny'>tárgy mennyiség:</label>
+    <input type="text" name="menny" class="form-control" [(ngModel)]='pluszIgeny.targy_mennyiseg' required
+    placeholder='...'>
+</div>
+
+   <div class="form-group">
+    <label for='ig'>Eddig igényelném (tól/ig):</label>
+    <input type="text" name="ig" class="form-control" [(ngModel)]='pluszIgeny.igeny_vege' required
+    placeholder='...'>
+</div>
+
+<div class="form-group">
+    <label for='nev'>Igénylő neve:</label>
+    <input type="text" name="nev" class="form-control" [(ngModel)]='pluszIgeny.igenylo' required 
+    placeholder='...'>
+</div>
+    <button name='mentes' id='mentes' (click)='ujIgeny()' class='btn btn-primary'[disabled]="modosit.form.invalid">Mentés</button>
+  </form>
+  </div>
+
+<div class='container'>
+    <table class='table table-dark'>
+        <thead>
+            <th>{{igenyHead[0]}}</th>
+            <th>{{igenyHead[1]}}</th>
+            <th>{{igenyHead[2]}}</th>
+            <th>{{igenyHead[3]}}</th>
+            <th>{{igenyHead[4]}}</th>
+            <th>{{igenyHead[5]}}</th>
+        </thead>
+
+        <tr *ngFor ='let i of igenyArr'>
+            <td>{{i.igenyelt_targy}}</td>
+            <td>{{i.targy_mennyiseg}}</td>
+            <td>{{i.igeny_idopont}}</td>
+            <td>{{i.igeny_vege}}</td>
+            <td>{{i.igenylo}}</td>
+            <td>{{i.elbiralt}}</td>
+        </tr>
+    </table>
+</div>
+</div>

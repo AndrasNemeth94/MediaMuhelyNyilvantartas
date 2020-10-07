@@ -1,0 +1,55 @@
+<app-navbarcomp></app-navbarcomp>
+
+<div class='wrap'>
+<div class='container'>
+    <table class='table table-dark'>
+        <thead>
+            <!--<th>{{igenyHead[0]}}</th>-->
+            <th>{{igenyHead[0]}}</th>
+            <th>{{igenyHead[1]}}</th>
+            <th>{{igenyHead[2]}}</th>
+            <th>{{igenyHead[3]}}</th>
+            <th>{{igenyHead[4]}}</th>
+            <th>{{igenyHead[5]}}</th>
+        </thead>
+
+        <tr *ngFor ='let i of igenyArr'>
+
+            <!--<td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.igeny_id'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.igeny_id}}</td>-->
+
+            <td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.igenyelt_targy'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.igenyelt_targy}}</td>
+            
+            <!--<td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_id'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.targy_id}}</td>-->
+
+            <td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.targy_mennyiseg'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.targy_mennyiseg}}</td>
+
+            <td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.igeny_idopont'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.igeny_idopont}}</td>
+
+            <td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.igeny_vege'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.igeny_vege}}</td>
+
+            <td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.igenylo'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.igenylo}}</td>
+
+            <td *ngIf='editId === i.igeny_id && !(i==0)'><input class='szerk' type='text' [(ngModel)]='i.elbiralt'></td>
+            <td *ngIf='editId !== i.igeny_id'>{{i.elbiralt}}</td>
+
+            <td *ngIf='!(i==0)'><button id='mod'class='btn btn-warning' value='{{i.igeny_id}}' (click)='Mod(i.igeny_id)'>
+                <img src="../../../assets/img/modosit.svg" width="15" />
+            </button></td>
+            <td *ngIf='!(i==0)'><button id='sav'class='btn btn-success' value='{{i.igeny_id}}' (click)='Save(i)'>
+                <img src="../../../assets/img/save.png" width="15" />
+            </button></td>
+            <td *ngIf='!(i==0)'><button id='del'class='btn btn-danger' value='{{i.igeny_id}}' (click)='Del(i.igeny_id)'>
+                <img src="../../../assets/img/bezar.png" width="15" />
+            </button></td>
+
+        </tr>
+    </table>
+</div>
+</div>

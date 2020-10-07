@@ -1,0 +1,24 @@
+<app-navbardiak></app-navbardiak>
+
+<div class='wrap'>
+<div class='container'>
+    <table class='table table-dark'>
+        <thead>
+            <th>{{targyHead[0]}}</th>
+            <th>{{targyHead[1]}}</th>
+            <th>{{targyHead[2]}}</th>
+            <th>{{targyHead[3]}}</th>
+            <th>{{targyHead[4]}}</th>
+        </thead>
+
+        <tr *ngFor ='let i of targyak'>
+            <td>{{i.targy_id}}</td>
+            <td>{{i.targy_marka}}</td>
+            <td>{{i.targy_tipus}}</td>
+            <td>{{i.targy_db}}</td>
+            <td>{{i.targy_elerheto}}</td>
+
+        </tr>
+    </table>
+</div>
+</div>
